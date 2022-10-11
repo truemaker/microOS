@@ -15,7 +15,7 @@ start:
 	int 0x10
 
     mov bx, load
-    mov dh, 2
+    mov dh, 6
 
     mov ah, 0x02
     mov al, dh 

@@ -3,3 +3,5 @@
 start:
     call main
     jmp $
+
+%include "kernel/task.asm"
