@@ -15,7 +15,7 @@ start:
 	int 0x10
 
     mov bx, load
-    mov dh, 6
+    mov dh, 10
 
     mov ah, 0x02
     mov al, dh 
@@ -95,6 +95,7 @@ start_pm:
 
     mov ebp, 0x7c00
 	mov esp, ebp
+    sti
 
     mov eax, 0x0f01
     mov [0xb8000], eax
