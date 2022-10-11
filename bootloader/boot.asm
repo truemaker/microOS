@@ -15,7 +15,7 @@ start:
 	int 0x10
 
     mov bx, load
-    mov dh, 1
+    mov dh, 2
 
     mov ah, 0x02
     mov al, dh 
@@ -101,6 +101,8 @@ start_pm:
 
     mov bx, msg_pm
     call print_string_pm
+
+    jmp CODE_SEG:load
     jmp $
 
 print_string_pm:
