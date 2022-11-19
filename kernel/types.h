@@ -2,6 +2,7 @@
 typedef unsigned char uint8_t;
 typedef unsigned short uint16_t;
 typedef unsigned int uint32_t;
+typedef unsigned long uint64_t;
 
 struct Task {
     uint32_t esp;
@@ -14,10 +15,9 @@ Task* current_task;
 
 struct Stack {
     uint32_t eflags;
+    uint32_t ebp;
     uint32_t edi;
     uint32_t esi;
-    uint32_t ebp;
-    uint32_t esp;
     uint32_t edx;
     uint32_t ecx;
     uint32_t ebx;

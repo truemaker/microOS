@@ -1,5 +1,5 @@
 #include "types.h"
-uint32_t stack = 0x200000;
+uint32_t stack = 0x180000;
 uint32_t get_new_stack() {
     stack = stack + 0x2000; // 1 KB Stack
     return stack;
@@ -12,7 +12,6 @@ Task* createTask(void(*func)()) {
     tStack->edi = 0;
     tStack->esi = 0;
     tStack->ebp = taskStack;
-    tStack->esp = taskStack-(4*4);
     tStack->edx = 0;
     tStack->ecx = 0;
     tStack->ebx = 0;

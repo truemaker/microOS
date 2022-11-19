@@ -1,10 +1,25 @@
 [bits 32]
 [global switch_context]
 switch_context:
-    pusha
+    push eax
+    push ebx
+    push ecx
+    push edx
+    push esi
+    push edi
+    push ebp
     pushf
-    mov eax, [ebp+56]
+    
+    mov eax, [esp+36]
     mov [eax], esp
-    mov esp, [ebp+52]
-    popa
+    mov esp, [esp+32]
+    
+    popf
+    pop ebp
+    pop edi
+    pop esi
+    pop edx
+    pop ecx
+    pop ebx
+    pop eax
     ret
