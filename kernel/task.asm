@@ -12,7 +12,7 @@ switch_context:
     
     mov eax, [esp+36]
     mov [eax], esp
-    mov esp, [esp+32]
+    mov esp, [esp+40]
     
     popf
     pop ebp

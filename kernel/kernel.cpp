@@ -6,8 +6,6 @@
 
 void test() {
     print_string("Hello from second task!");
-    /*uint32_t esp = 0;
-    __asm__ __volatile__("movl %%esp, %0":"=m"(esp)::"%eax");*/
     yield();
 }
 
