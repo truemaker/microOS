@@ -16,9 +16,12 @@ extern "C" void exception_handler(void) {
 
 extern "C" void main() {
     print_string("Hello from kernel!");
+    asm("cli");
     idt_init();
+    asm("sti");
     current_task = &mainTask;
     Task* secondTask = createTask(test);
     yield();
+    print_string("Hi from kernel again.");
     for (;;);
 }

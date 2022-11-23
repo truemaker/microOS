@@ -8,7 +8,7 @@ struct Task {
     uint32_t esp;
     bool running;
     Task* next;
-};
+} __attribute__((packed));
 
 Task mainTask;
 Task* current_task;
