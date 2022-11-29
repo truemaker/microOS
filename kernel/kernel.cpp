@@ -14,12 +14,16 @@ extern "C" void exception_handler(void) {
     for (;;);
 }
 
+extern "C" void remap_pic();
+
 extern "C" void main() {
     print_string("Hello from kernel!");
     asm("cli");
     idt_init();
+    remap_pic();
     asm("sti");
     current_task = &mainTask;
+    mainTask.next = &mainTask;
     Task* secondTask = createTask(test);
     yield();
     print_string("Hi from kernel again.");

@@ -21,8 +21,8 @@ Task* createTask(void(*func)()) {
     latest_task = latest_task + sizeof(Task);
     Task* task = (Task*)(latest_task-sizeof(Task));
     task->esp = (uint32_t)tStack;
-    task->next = mainTask.next;
-    mainTask.next = task;
+    task->next = current_task->next;
+    current_task->next = task;
     return task;
 }
 

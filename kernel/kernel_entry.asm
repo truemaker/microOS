@@ -59,3 +59,29 @@ isr_stub_table:
     dd isr_stub_%+i ; use DQ instead if targeting 64-bit
 %assign i i+1 
 %endrep
+
+pic1_mask: db 0
+pic2_mask: db 0
+
+%macro outb 2
+  mov al, %2
+  out %1, al
+%endmacro
+
+[global remap_pic]
+remap_pic:
+  ;in al, 0x21
+  ;mov [pic1_mask], al
+  ;in al, 0xA1
+  ;mov [pic2_mask], al
+  outb 0x20, 0x11
+  outb 0xA0, 0x11
+  outb 0x21, 0x20
+  outb 0xA1, 0x28
+  outb 0x21, 0x04
+  outb 0xA1, 0x02
+  outb 0x21, 0x01
+  outb 0xA1, 0x01
+  ;outb 0x21, [pic1_mask]
+  ;outb 0xA1, [pic2_mask]
+  ret
